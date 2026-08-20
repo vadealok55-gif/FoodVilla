@@ -1,0 +1,337 @@
+/* =============================================
+   LOGIN PAGE — Food Villa
+   Professional, Clean, Muted Palette
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	background: #f1f5f9;
+	min-height: 100vh;
+}
+
+/* ---- WRAPPER ---- */
+.login-wrapper {
+	display: flex;
+	min-height: 100vh;
+}
+
+/* ---- LEFT PANEL ---- */
+.left-panel {
+	width: 38%;
+	background: #1e293b;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 60px 50px;
+	position: relative;
+	overflow: hidden;
+}
+
+.left-panel::before {
+	content: '';
+	position: absolute;
+	top: -80px;
+	left: -80px;
+	width: 300px;
+	height: 300px;
+	background: rgba(255,255,255,0.04);
+	border-radius: 50%;
+}
+
+.left-panel::after {
+	content: '';
+	position: absolute;
+	bottom: -100px;
+	right: -60px;
+	width: 350px;
+	height: 350px;
+	background: rgba(255,255,255,0.03);
+	border-radius: 50%;
+}
+
+.brand {
+	position: relative;
+	z-index: 1;
+}
+
+.brand-icon {
+	width: 64px;
+	height: 64px;
+	background: rgba(255,255,255,0.1);
+	border-radius: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 28px;
+	border: 1px solid rgba(255,255,255,0.12);
+}
+
+.brand-icon i {
+	font-size: 28px;
+	color: #94a3b8;
+}
+
+.brand h1 {
+	font-size: 32px;
+	font-weight: 700;
+	color: #f8fafc;
+	letter-spacing: -0.5px;
+	margin-bottom: 16px;
+}
+
+.brand p {
+	font-size: 15px;
+	color: #94a3b8;
+	line-height: 1.7;
+	max-width: 280px;
+}
+
+.left-footer {
+	position: relative;
+	z-index: 1;
+}
+
+.left-footer p {
+	font-size: 13px;
+	color: #475569;
+}
+
+/* ---- RIGHT PANEL ---- */
+.right-panel {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 40px 30px;
+	background: #f8fafc;
+	overflow-y: auto;
+}
+
+.forms-container {
+	width: 100%;
+	max-width: 440px;
+}
+
+/* ---- FORM CARD ---- */
+.form-card {
+	background: #ffffff;
+	border-radius: 16px;
+	padding: 32px;
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+	transition: box-shadow 0.2s ease;
+}
+
+.form-card:hover {
+	box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.form-header {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 28px;
+}
+
+.form-icon {
+	width: 48px;
+	height: 48px;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.admin-icon {
+	background: #f0fdf4;
+	border: 1px solid #bbf7d0;
+}
+
+.admin-icon i {
+	color: #16a34a;
+	font-size: 20px;
+}
+
+.user-icon {
+	background: #eff6ff;
+	border: 1px solid #bfdbfe;
+}
+
+.user-icon i {
+	color: #2563eb;
+	font-size: 20px;
+}
+
+.form-header h2 {
+	font-size: 20px;
+	font-weight: 600;
+	color: #0f172a;
+	margin-bottom: 2px;
+}
+
+.subtitle {
+	font-size: 13px;
+	color: #64748b;
+}
+
+/* ---- INPUTS ---- */
+.input-group {
+	margin-bottom: 18px;
+}
+
+.input-group label {
+	display: block;
+	font-size: 13px;
+	font-weight: 500;
+	color: #374151;
+	margin-bottom: 6px;
+}
+
+.input-wrapper {
+	position: relative;
+}
+
+.input-icon {
+	position: absolute;
+	left: 14px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #94a3b8;
+	font-size: 14px;
+	pointer-events: none;
+}
+
+.input-wrapper input {
+	width: 100%;
+	padding: 11px 14px 11px 40px;
+	border: 1.5px solid #e2e8f0;
+	border-radius: 10px;
+	font-size: 14px;
+	font-family: 'Inter', sans-serif;
+	color: #1e293b;
+	background: #fafafa;
+	transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+	outline: none;
+}
+
+.input-wrapper input::placeholder {
+	color: #cbd5e1;
+}
+
+.input-wrapper input:focus {
+	border-color: #64748b;
+	background: #ffffff;
+	box-shadow: 0 0 0 3px rgba(100,116,139,0.1);
+}
+
+/* ---- ERROR ---- */
+.error-msg {
+	background: #fef2f2;
+	border: 1px solid #fecaca;
+	color: #dc2626;
+	font-size: 13px;
+	padding: 10px 14px;
+	border-radius: 8px;
+	margin-bottom: 16px;
+}
+
+/* ---- BUTTONS ---- */
+.btn {
+	width: 100%;
+	padding: 12px;
+	border: none;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 600;
+	font-family: 'Inter', sans-serif;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	transition: all 0.2s ease;
+	letter-spacing: 0.01em;
+}
+
+.btn-admin {
+	background: #1e293b;
+	color: #f8fafc;
+}
+
+.btn-admin:hover {
+	background: #0f172a;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(30,41,59,0.3);
+}
+
+.btn-user {
+	background: #2563eb;
+	color: #ffffff;
+}
+
+.btn-user:hover {
+	background: #1d4ed8;
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+}
+
+/* ---- DIVIDER ---- */
+.divider {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 20px 0;
+	color: #94a3b8;
+	font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+	content: '';
+	flex: 1;
+	height: 1px;
+	background: #e2e8f0;
+}
+
+/* ---- REGISTER LINK ---- */
+.register-link {
+	text-align: center;
+	font-size: 13px;
+	color: #64748b;
+	margin-top: 16px;
+}
+
+.register-link a {
+	color: #2563eb;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.register-link a:hover {
+	text-decoration: underline;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+	.login-wrapper {
+		flex-direction: column;
+	}
+	.left-panel {
+		width: 100%;
+		padding: 30px 24px;
+		min-height: auto;
+	}
+	.brand p { display: none; }
+	.left-footer { display: none; }
+	.right-panel { padding: 24px 16px; }
+	.forms-container { max-width: 100%; }
+}

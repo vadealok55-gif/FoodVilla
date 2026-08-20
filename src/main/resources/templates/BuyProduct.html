@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Product — Food Villa</title>
+    
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Professional Dark Slate Stylesheet -->
+    <link rel="stylesheet" th:href="@{/css/BuyProduct.css}" />
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="top-nav">
+        <a href="/login" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Logout</a>
+        <div class="welcome-text">
+            Welcome Back, <span th:text="${name}">User</span>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <!-- Search Section -->
+        <div class="card search-card">
+            <form action="" th:action="@{/product/search}" method="post" class="search-form">
+                <h2><i class="fa-solid fa-magnifying-glass"></i> Product Search</h2>
+                <div class="input-group">
+                    <input type="text" name="productName" required placeholder="Enter Product Name (e.g. Biryani)">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+                <div class="error-msg" th:if="${message != null}" th:text="${message}"></div>
+            </form>
+        </div>
+        
+        <!-- Order Form Section -->
+        <div th:if="${product != null}" class="card order-card">
+            <h2><i class="fa-solid fa-cart-plus"></i> Place Order</h2>
+            <form action="" th:action="@{/product/order}" th:object="${product}" method="post" class="order-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <input type="text" name="oName" th:value="${product.pname}" readonly class="readonly-input" />
+                    </div>
+                    <div class="form-group">
+                        <label>Product Price (Rs)</label>
+                        <input type="text" name="oPrice" th:value="${product.pprice}" readonly class="readonly-input" />
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" placeholder="Min 1" min="1" name="oQuantity" required />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success"><i class="fa-solid fa-check"></i> Order Now</button>
+            </form>
+        </div>
+        
+        <!-- Order History Section -->
+        <div th:if="${orders != null}" class="card history-card">
+            <h2><i class="fa-solid fa-clock-rotate-left"></i> Your Orders</h2>
+            
+            <div class="table-container" th:if="${not #lists.isEmpty(orders)}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total Amount</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="order : ${orders}">
+                            <td th:text="${order.oName}"></td>
+                            <td th:text="'Rs ' + ${order.oPrice}"></td>
+                            <td th:text="${order.oQuantity}"></td>
+                            <td th:text="'Rs ' + ${order.totalAmmout}" class="highlight-total"></td>
+                            <td th:text="${order.orderDate}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${#lists.isEmpty(orders)}" class="empty-state">
+                <i class="fa-solid fa-box-open"></i>
+                <p>You haven't placed any orders yet.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

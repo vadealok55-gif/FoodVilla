@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin Dashboard — Food Villa</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" href="" th:href="@{/css/Admin_Page.css}" />
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+
+	<!-- SIDEBAR -->
+	<aside class="sidebar">
+		<div class="sidebar-brand">
+			<div class="brand-icon"><i class="fa-solid fa-utensils"></i></div>
+			<span>Food Villa</span>
+		</div>
+		<nav class="sidebar-nav">
+			<a href="#section-admins" class="nav-item active">
+				<i class="fa-solid fa-shield-halved"></i> Admins
+			</a>
+			<a href="#section-users" class="nav-item">
+				<i class="fa-solid fa-users"></i> Users
+			</a>
+			<a href="#section-products" class="nav-item">
+				<i class="fa-solid fa-box-open"></i> Products
+			</a>
+			<a href="#section-orders" class="nav-item">
+				<i class="fa-solid fa-receipt"></i> Orders
+			</a>
+		</nav>
+		<div class="sidebar-footer">
+			<a href="/login" class="logout-btn">
+				<i class="fa-solid fa-right-from-bracket"></i> Logout
+			</a>
+		</div>
+	</aside>
+
+	<!-- MAIN CONTENT -->
+	<main class="main-content">
+
+		<!-- TOP BAR -->
+		<header class="topbar">
+			<div>
+				<h1 class="page-title">Admin Dashboard</h1>
+				<p class="page-subtitle">Manage your Food Villa operations</p>
+			</div>
+			<div class="topbar-right">
+				<div class="admin-badge">
+					<i class="fa-solid fa-circle-user"></i>
+					<span>Administrator</span>
+				</div>
+			</div>
+		</header>
+
+		<!-- STATS CARDS -->
+		<div class="stats-grid">
+			<div class="stat-card">
+				<div class="stat-icon admins-icon"><i class="fa-solid fa-shield-halved"></i></div>
+				<div class="stat-info">
+					<span class="stat-label">Total Admins</span>
+					<span class="stat-value" th:text="${#lists.size(admins)}">0</span>
+				</div>
+			</div>
+			<div class="stat-card">
+				<div class="stat-icon users-icon"><i class="fa-solid fa-users"></i></div>
+				<div class="stat-info">
+					<span class="stat-label">Total Users</span>
+					<span class="stat-value" th:text="${#lists.size(users)}">0</span>
+				</div>
+			</div>
+			<div class="stat-card">
+				<div class="stat-icon products-icon"><i class="fa-solid fa-box-open"></i></div>
+				<div class="stat-info">
+					<span class="stat-label">Products</span>
+					<span class="stat-value" th:text="${#lists.size(products)}">0</span>
+				</div>
+			</div>
+			<div class="stat-card">
+				<div class="stat-icon orders-icon"><i class="fa-solid fa-receipt"></i></div>
+				<div class="stat-info">
+					<span class="stat-label">Orders</span>
+					<span class="stat-value" th:text="${#lists.size(orders)}">0</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- ADMINS TABLE -->
+		<section class="table-section" id="section-admins">
+			<div class="section-header">
+				<div>
+					<h2><i class="fa-solid fa-shield-halved"></i> Admins</h2>
+					<p>Manage administrator accounts</p>
+				</div>
+				<a href="" th:href="@{/addAdmin}" class="add-btn">
+					<i class="fa-solid fa-plus"></i> Add Admin
+				</a>
+			</div>
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>#ID</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="admin : ${admins}">
+							<td><span class="id-badge" th:text="${admin.adminId}"></span></td>
+							<td th:text="${admin.adminName}"></td>
+							<td th:text="${admin.adminEmail}"></td>
+							<td th:text="${admin.adminNumber}"></td>
+							<td class="actions">
+								<a th:href="@{'/updateAdmin/'+${admin.adminId}}" class="action-btn edit-btn" title="Edit">
+									<i class="fa-solid fa-pen"></i>
+								</a>
+								<a th:href="@{'/deleteAdmin/'+${admin.adminId}}" class="action-btn delete-btn" title="Delete"
+								   onclick="return confirm('Delete this admin?')">
+									<i class="fa-solid fa-trash"></i>
+								</a>
+							</td>
+						</tr>
+						<tr th:if="${#lists.isEmpty(admins)}">
+							<td colspan="5" class="empty-row">No admins found</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<!-- USERS TABLE -->
+		<section class="table-section" id="section-users">
+			<div class="section-header">
+				<div>
+					<h2><i class="fa-solid fa-users"></i> Users</h2>
+					<p>Manage registered user accounts</p>
+				</div>
+				<a href="" th:href="@{/addUser}" class="add-btn">
+					<i class="fa-solid fa-plus"></i> Add User
+				</a>
+			</div>
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>#ID</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="user : ${users}">
+							<td><span class="id-badge" th:text="${user.u_id}"></span></td>
+							<td th:text="${user.uname}"></td>
+							<td th:text="${user.uemail}"></td>
+							<td th:text="${user.unumber}"></td>
+							<td class="actions">
+								<a th:href="@{'/updateUser/'+${user.u_id}}" class="action-btn edit-btn" title="Edit">
+									<i class="fa-solid fa-pen"></i>
+								</a>
+								<a th:href="@{'/deleteUser/'+${user.u_id}}" class="action-btn delete-btn" title="Delete"
+								   onclick="return confirm('Delete this user?')">
+									<i class="fa-solid fa-trash"></i>
+								</a>
+							</td>
+						</tr>
+						<tr th:if="${#lists.isEmpty(users)}">
+							<td colspan="5" class="empty-row">No users found</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<!-- PRODUCTS TABLE -->
+		<section class="table-section" id="section-products">
+			<div class="section-header">
+				<div>
+					<h2><i class="fa-solid fa-box-open"></i> Products</h2>
+					<p>Manage food inventory and pricing</p>
+				</div>
+				<a href="" th:href="@{/addProduct}" class="add-btn">
+					<i class="fa-solid fa-plus"></i> Add Product
+				</a>
+			</div>
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>#ID</th>
+							<th>Product Name</th>
+							<th>Price (₹)</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="product : ${products}">
+							<td><span class="id-badge" th:text="${product.pid}"></span></td>
+							<td th:text="${product.pname}"></td>
+							<td><span class="price-tag" th:text="'₹' + ${product.pprice}"></span></td>
+							<td class="actions">
+								<a th:href="@{'/updateProduct/'+${product.pid}}" class="action-btn edit-btn" title="Edit">
+									<i class="fa-solid fa-pen"></i>
+								</a>
+								<a th:href="@{'/deleteProduct/'+${product.pid}}" class="action-btn delete-btn" title="Delete"
+								   onclick="return confirm('Delete this product?')">
+									<i class="fa-solid fa-trash"></i>
+								</a>
+							</td>
+						</tr>
+						<tr th:if="${#lists.isEmpty(products)}">
+							<td colspan="4" class="empty-row">No products found</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<!-- ORDERS TABLE -->
+		<section class="table-section" id="section-orders">
+			<div class="section-header">
+				<div>
+					<h2><i class="fa-solid fa-receipt"></i> Orders</h2>
+					<p>View all customer orders</p>
+				</div>
+			</div>
+			<div class="table-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>Customer</th>
+							<th>Email</th>
+							<th>Product</th>
+							<th>Price</th>
+							<th>Qty</th>
+							<th>Total</th>
+							<th>Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="order : ${orders}">
+							<td th:text="${order.user.uname}"></td>
+							<td th:text="${order.user.uemail}"></td>
+							<td th:text="${order.oName}"></td>
+							<td th:text="'₹' + ${order.oPrice}"></td>
+							<td><span class="qty-badge" th:text="${order.oQuantity}"></span></td>
+							<td><strong th:text="'₹' + ${order.totalAmmout}"></strong></td>
+							<td th:text="${order.orderDate}"></td>
+						</tr>
+						<tr th:if="${#lists.isEmpty(orders)}">
+							<td colspan="7" class="empty-row">No orders yet</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+	</main>
+</div>
+
+<script>
+	// Highlight active nav item on scroll/click
+	document.querySelectorAll('.nav-item').forEach(link => {
+		link.addEventListener('click', function() {
+			document.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
+			this.classList.add('active');
+		});
+	});
+</script>
+
+</body>
+</html>

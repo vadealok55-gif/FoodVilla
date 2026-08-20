@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>User Login — Food Villa</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" href="" th:href="@{/css/Login.css}" />
+</head>
+<body>
+	<div class="login-wrapper">
+
+		<!-- LEFT PANEL -->
+		<div class="left-panel">
+			<div class="brand">
+				<div class="brand-icon">
+					<i class="fa-solid fa-utensils"></i>
+				</div>
+				<h1>Food Villa</h1>
+				<p>Delicious food delivered to your door. Log in to place your orders, track deliveries, and manage your account.</p>
+			</div>
+			<div class="left-footer">
+				<p>&copy; 2024 Food Villa. All rights reserved.</p>
+			</div>
+		</div>
+
+		<!-- RIGHT PANEL -->
+		<div class="right-panel">
+			<div class="forms-container" style="max-width: 400px; margin: 0 auto;">
+
+				<!-- USER LOGIN -->
+				<div class="form-card" id="user-form">
+					<div class="form-header">
+						<div class="form-icon user-icon">
+							<i class="fa-solid fa-user"></i>
+						</div>
+						<div>
+							<h2>Welcome Back</h2>
+							<p class="subtitle">Sign in to your user account</p>
+						</div>
+					</div>
+
+					<form th:action="@{/userLogin}" method="post">
+						<div class="input-group">
+							<label for="userEmail">Email Address</label>
+							<div class="input-wrapper">
+								<i class="fa-solid fa-envelope input-icon"></i>
+								<input type="email" id="userEmail" name="userEmail" placeholder="user@example.com" required>
+							</div>
+						</div>
+						<div class="input-group">
+							<label for="userPassword">Password</label>
+							<div class="input-wrapper">
+								<i class="fa-solid fa-lock input-icon"></i>
+								<input type="password" id="userPassword" name="userPassword" placeholder="Enter your password" required maxlength="8" minlength="4">
+							</div>
+						</div>
+						<div class="error-msg" th:if="${error2}" th:text="${error2}"></div>
+						<button type="submit" class="btn btn-user">
+							<i class="fa-solid fa-right-to-bracket"></i> Sign In
+						</button>
+						<p class="register-link">
+							Don't have an account? <a th:href="@{/register}">Register here</a>
+						</p>
+						<p class="register-link" style="margin-top: 10px;">
+							<a th:href="@{/home}"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+						</p>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

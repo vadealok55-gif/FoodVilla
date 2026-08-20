@@ -1,0 +1,146 @@
+/* =============================================
+   LOCATE US / CONTACT PAGE — Food Villa
+   Professional, Dark Slate Theme
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a; /* Slate 900 */
+    color: #f8fafc;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin: 40px 0;
+    color: #f8fafc;
+}
+
+/* Map Section */
+.location {
+    width: 100%;
+    margin-bottom: 50px;
+    background: #1e293b;
+    padding: 10px;
+    border-radius: 12px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.location iframe {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+    filter: invert(90%) hue-rotate(180deg); /* Dark mode map trick */
+}
+
+/* Contact Section */
+.contact-us {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-col {
+    flex-basis: 48%;
+}
+
+.contact-col div {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.contact-icon {
+    font-size: 24px;
+    color: #3b82f6; /* Blue 500 */
+    margin-right: 20px;
+    background: rgba(59, 130, 246, 0.1);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.contact-col div h5 {
+    font-size: 18px;
+    margin: 0 0 4px 0;
+    color: #f1f5f9;
+    font-weight: 600;
+}
+
+.contact-col div p {
+    margin: 0;
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Form Styles */
+.contact-col input, 
+.contact-col textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    background-color: #1e293b;
+    border-radius: 10px;
+    color: #f8fafc;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.contact-col input::placeholder,
+.contact-col textarea::placeholder {
+    color: #64748b;
+}
+
+.contact-col input:focus, 
+.contact-col textarea:focus {
+    border-color: #3b82f6;
+    background-color: #0f172a;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.hero-btn:hover {
+    background: #2563eb;
+}
+
+@media (max-width: 768px) {
+    .contact-us {
+        flex-direction: column;
+    }
+    .contact-col {
+        flex-basis: 100%;
+    }
+}
