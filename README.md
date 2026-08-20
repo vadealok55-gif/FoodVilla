@@ -11,7 +11,7 @@ FoodVilla is a comprehensive, modern web application designed for managing custo
 ## Technology Stack
 - **Backend**: Spring Boot, Java, Spring MVC, Spring Data JPA
 - **Frontend**: Thymeleaf, HTML5, CSS3 (Custom Dark Theme), JavaScript
-- **Database**: SQL Server
+- **Database**: SQL 
 - **Build Tool**: Maven
 
 ## Setup and Installation
